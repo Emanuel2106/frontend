@@ -6,8 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+
+import ModalReportes from './ModalReportes';
+
 export default function Reportes() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true)
+  console.log(open)
+  const handleClose = () => setOpen(false) 
+  console.log(open)
+
+  
   return (
+     <>   
+
+
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
@@ -25,8 +38,10 @@ export default function Reportes() {
       </CardContent>
       <CardActions>
     
-        <Button size="small">Ver mas</Button>
+        <Button size="small"  onClick={handleOpen}>Ver mas</Button>
       </CardActions>
     </Card>
+    <ModalReportes open={open} onClose={handleClose}/> 
+    </>
   );
 }
