@@ -1,39 +1,37 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import FormReportes from './FormReportes';
-import GridReportes from './GridReportes';
+import * as React from "react";
+import Button from "@mui/material/Button";
 
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+import FormReportes from './FormReportes'
+import GridReportes from './GridReportes'
 
-
-export default function ModalReportes({ open, onClose}) {
-    
-    return (
-        <Modal
+export default function ModalReportes({ open, onClose }) {
+  return (
+    <>
+      <Dialog
         open={open}
         onClose={onClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <Box sx={style}>
-        <FormReportes/>  
-        <GridReportes/>
+        <DialogTitle id="alert-dialog-title">Reportes</DialogTitle>
+        <DialogContent>
+          <FormReportes />
+          <GridReportes />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose}>Cancelar</Button>
+          <Button onClick={onClose} autoFocus>
+            Enviar
+          </Button>
+        </DialogActions>
+      </Dialog>
 
-        </Box>
-      </Modal>
-    )
+      
+    </>
+  );
 }
