@@ -1,0 +1,61 @@
+[
+  {
+    "id": "people",
+    "text": "Localizacion",
+    "icon": "People",
+    "children": [
+      {
+        "id": "pais",
+        "text": "Pais",
+        "icon": "Timer"
+      },
+      {
+        "id": "departamento",
+        "text": "Departamento",
+        "icon": "PhonelinkSetup"
+      },
+      {
+        "id": "municipio",
+        "text": "Municipio",
+        "icon": "PhonelinkSetup"
+      }
+    ]
+  },
+  {
+    "id": "quality",
+    "text": "Inventario",
+    "icon": "AddShoppingCartIcon",
+    "children": [
+      {
+        "id": "producto_presentacion",
+        "text": "ProductoPresentacion",
+        "icon": "ProductionQuantityLimitsIcon"
+      },
+      {
+        "id": "produccion",
+        "text": "Produccion",
+        "icon": "ProductionQuantityLimitsIcon"
+      },
+      {
+        "id": "kardex",
+        "text": "Kardex",
+        "icon": "ProductionQuantityLimitsIcon"
+      },
+      {
+        "id": "KardexItem",
+        "text": "KardexItem",
+        "icon": "ProductionQuantityLimitsIcon"
+
+
+      },
+      {
+        "id": "Reportes",
+        "text": "Reportes",
+        "icon": "ProductionQuantityLimitsIcon"
+
+
+      }
+
+    ]
+  }
+]
