@@ -5,8 +5,11 @@ import FormKardexItem from "./FormKardexItem";
 import GridKardexItem from "./GridKardexItem";
 import ComboBox from '/src/components/ComboBox.jsx';
 import { SiteProps } from '../dashboard/SiteProps';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Box from '@mui/material/Box';
 
-export default function KardexItem() {
+export default function KardexItem({ goBack }) {
   const row = {
     kai_id: 0,
     kai_kardex_id: 0,
@@ -35,10 +38,6 @@ export default function KardexItem() {
   const [selectedAlmacen, setSelectedAlmacen] = React.useState(null);
   const [selectedProduccion, setSelectedProduccion] = React.useState(null);
   const [selectedMovimiento, setSelectedMovimiento] = React.useState(null);
-
-
-
-
 
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/kardex_item`)
@@ -104,7 +103,14 @@ export default function KardexItem() {
   };
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <Box style={{ height: '100%', width: '100%' }}>
+      <Button 
+        variant="contained" 
+        startIcon={<ArrowBackIcon />} 
+        onClick={goBack} 
+        sx={{ mb: 2 }}>
+        Volver
+      </Button>
       <MessageSnackBar message={message} setMessage={setMessage} />
       <ComboBox
         onAlmacenChange={(almacen) => setSelectedAlmacen(almacen)}
@@ -124,7 +130,6 @@ export default function KardexItem() {
         setSelectedRow={setSelectedRow}
         kardexItems={filteredKardexItems}
       />
-    </div>
+    </Box>
   );
 }
-

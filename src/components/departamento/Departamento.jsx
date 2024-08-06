@@ -4,9 +4,11 @@ import MessageSnackBar from '../MessageSnackBar';
 import FormDepartamento from "./FormDepartamento";
 import GridDepartamento from "./GridDepartamento";
 import { SiteProps } from '../dashboard/SiteProps';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Box from '@mui/material/Box';
 
-
-export default function Departamento() {
+export default function Departamento({ goBack }) {
   const row = {
     dep_id: 0,
     dep_nombre: "",
@@ -22,73 +24,48 @@ export default function Departamento() {
     text: ""
   };
 
-  
   const [message, setMessage] = React.useState(messageData);
   const [departamentos, setDepartamentos] = React.useState([]);
   const [pais, setPais] = React.useState([]);
-
-
-
 
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/departamento`)
       .then(response => {
         const departamentoData = response.data.map((item) => ({
           ...item,
-          id: item.dep_id, // Asignar id basado en pai_id
+          id: item.dep_id, // Asignar id basado en dep_id
         }));
         setDepartamentos(departamentoData);
         console.log(departamentoData);
       })
       .catch(error => {
-        console.error("Error al buscar pais!", error);
+        console.error("Error al buscar departamento!", error);
       });
   }, []);
-
-  // React.useEffect(() => {
-  //   axios.get(`${SiteProps.urlbase}/departamento` )
-  //     .then(response => {
-  //       setDepartamentos(response.data);
-  //       console.log(departamentos);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error al buscar departamento!", error);
-  //     });
-  // }, []);
-  
-
-
-  // React.useEffect(() => {
-  //   axios.get(`${SiteProps.urlbase}/pais` )
-  //     .then(response => {
-  //       setPais(response.data);
-  //       console.log(pais);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error al buscar pais!", error);
-  //     });
-  // }, []);
-
-
 
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/pais`)
       .then(response => {
         setPais(response.data);
-        console.log(pais);
+        console.log(response.data);
       })
       .catch(error => {
         console.error("Error al buscar pais!", error);
       });
   }, []);
 
-
-
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <Box style={{ height: '100%', width: '100%' }}>
+      <Button 
+        variant="contained" 
+        startIcon={<ArrowBackIcon />} 
+        onClick={goBack} 
+        sx={{ mb: 2 }}>
+        Volver
+      </Button>
       <MessageSnackBar message={message} setMessage={setMessage} />
-      <FormDepartamento setMessage={setMessage} selectedRow={selectedRow} setSelectedRow={setSelectedRow} departamentos={departamentos} pais={pais}/>
+      <FormDepartamento setMessage={setMessage} selectedRow={selectedRow} setSelectedRow={setSelectedRow} departamentos={departamentos} pais={pais} />
       <GridDepartamento selectedRow={selectedRow} setSelectedRow={setSelectedRow} departamentos={departamentos} />
-    </div>
+    </Box>
   );
 }

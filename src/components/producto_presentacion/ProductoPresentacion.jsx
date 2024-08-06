@@ -4,8 +4,11 @@ import MessageSnackBar from '../MessageSnackBar';
 import FormProductoPresentacion from "./FormProductoPresentacion";
 import GridProductoPresentacion from "./GridProductoPresentacion";
 import { SiteProps } from '../dashboard/SiteProps';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Box from '@mui/material/Box';
 
-export default function ProductoPresentacion() {
+export default function ProductoPresentacion({ goBack }) {
   const row = {
     prp_id: 0,
     prp_producto_id: 0,
@@ -92,8 +95,6 @@ export default function ProductoPresentacion() {
       });
   }, []);
 
-
-
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/estado`)
       .then(response => {
@@ -106,7 +107,14 @@ export default function ProductoPresentacion() {
   }, []);
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <Box style={{ height: '100%', width: '100%' }}>
+      <Button 
+        variant="contained" 
+        startIcon={<ArrowBackIcon />} 
+        onClick={goBack} 
+        sx={{ mb: 2 }}>
+        Volver
+      </Button>
       <MessageSnackBar message={message} setMessage={setMessage} />
       <FormProductoPresentacion
         setMessage={setMessage}
@@ -123,6 +131,6 @@ export default function ProductoPresentacion() {
         setSelectedRow={setSelectedRow}
         productoPresentacion={productoPresentacion}
       />
-    </div>
+    </Box>
   );
 }

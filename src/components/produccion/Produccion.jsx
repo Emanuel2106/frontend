@@ -4,8 +4,11 @@ import MessageSnackBar from '../MessageSnackBar';
 import FormProduccion from "./FormProduccion";
 import GridProduccion from "./GridProduccion";
 import { SiteProps } from '../dashboard/SiteProps';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Box from '@mui/material/Box';
 
-export default function Produccion() {
+export default function Produccion({ goBack }) {
   const row = {
     pro_id: 0,
     pro_nombre: "",
@@ -81,7 +84,14 @@ export default function Produccion() {
   }, []);
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <Box style={{ height: '100%', width: '100%' }}>
+      <Button 
+        variant="contained" 
+        startIcon={<ArrowBackIcon />} 
+        onClick={goBack} 
+        sx={{ mb: 2 }}>
+        Volver
+      </Button>
       <MessageSnackBar message={message} setMessage={setMessage} />
       <FormProduccion
         setMessage={setMessage}
@@ -96,7 +106,6 @@ export default function Produccion() {
         setSelectedRow={setSelectedRow}
         produccion={produccion}
       />
-    </div>
+    </Box>
   );
 }
-

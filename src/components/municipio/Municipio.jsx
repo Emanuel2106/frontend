@@ -1,70 +1,14 @@
-// import * as React from 'react';
-// import axios from 'axios';
-// import MessageSnackBar from '../MessageSnackBar';
-// import FormMunicipio from "./FormMunicipio";
-// import GridMunicipio from "./GridMunicipio";
-// import { SiteProps } from '../dashboard/SiteProps';
-
-// export default function Municipio() {
-//   const row = {
-//     id: 0,
-//     nombre: "",
-//     departamento: 0,
-//     codigo: 0,
-//     acronimo: ""
-//   };
-
-//   const [selectedRow, setSelectedRow] = React.useState(row);
-//   const messageData = {
-//     open: false,
-//     severity: "success",
-//     text: ""
-//   };
-
-//   const [message, setMessage] = React.useState(messageData);
-//   const [municipios, setMunicipios] = React.useState([]);
-//   const [departamentos, setDepartamentos] = React.useState([]);
-
-//   React.useEffect(() => {
-//     axios.get(`${SiteProps.urlbase}/municipio`)
-//       .then(response => {
-//         setMunicipios(response.data);
-//         console.log(municipios);
-//       })
-//       .catch(error => {
-//         console.error("Error al buscar municipio!", error);
-//       });
-//   }, []);
-
-//   React.useEffect(() => {
-//     axios.get(`${SiteProps.urlbase}/departamento`)
-//       .then(response => {
-//         setDepartamentos(response.data);
-//         console.log(departamentos);
-//       })
-//       .catch(error => {
-//         console.error("Error al buscar departamento!", error);
-//       });
-//   }, []);
-
-//   return (
-//     <div style={{ height: '100%', width: '100%' }}>
-//       <MessageSnackBar message={message} setMessage={setMessage} />
-//       <FormMunicipio setMessage={setMessage} selectedRow={selectedRow} setSelectedRow={setSelectedRow} municipios={municipios} setMunicipios={setMunicipios} departamentos={departamentos} />
-//       <GridMunicipio selectedRow={selectedRow} setSelectedRow={setSelectedRow} municipios={municipios} />
-//     </div>
-//   );
-// }
-
 import * as React from "react";
 import axios from "axios";
 import MessageSnackBar from "../MessageSnackBar";
 import FormMunicipio from "./FormMunicipio";
 import GridMunicipio from "./GridMunicipio";
 import { SiteProps } from "../dashboard/SiteProps";
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Box from '@mui/material/Box';
 
-
-export default function Municipio() {
+export default function Municipio({ goBack }) {
   const row = {
     mun_id: 0,
     mun_nombre: "",
@@ -96,7 +40,7 @@ export default function Municipio() {
         console.log(municipioData);
       })
       .catch((error) => {
-        console.error("Error al buscar pais!", error);
+        console.error("Error al buscar municipio!", error);
       });
   }, []);
 
@@ -113,7 +57,14 @@ export default function Municipio() {
   }, []);
 
   return (
-    <div style={{ height: "100%", width: "100%" }}>
+    <Box style={{ height: "100%", width: "100%" }}>
+      <Button 
+        variant="contained" 
+        startIcon={<ArrowBackIcon />} 
+        onClick={goBack} 
+        sx={{ mb: 2 }}>
+        Volver
+      </Button>
       <MessageSnackBar message={message} setMessage={setMessage} />
       <FormMunicipio
         setMessage={setMessage}
@@ -127,6 +78,6 @@ export default function Municipio() {
         setSelectedRow={setSelectedRow}
         municipios={municipios}
       />
-    </div>
+    </Box>
   );
 }

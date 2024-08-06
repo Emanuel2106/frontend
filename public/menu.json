@@ -1,6 +1,6 @@
 [
   {
-    "id": "people",
+    "id": "localizacion",
     "text": "Localizacion",
     "icon": "People",
     "children": [
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "id": "quality",
+    "id": "inventario",
     "text": "Inventario",
     "icon": "AddShoppingCartIcon",
     "children": [
@@ -42,20 +42,28 @@
         "icon": "ProductionQuantityLimitsIcon"
       },
       {
-        "id": "KardexItem",
+        "id": "kardex_item",
         "text": "KardexItem",
         "icon": "ProductionQuantityLimitsIcon"
-
-
-      },
-      {
-        "id": "Reportes",
-        "text": "Reportes",
-        "icon": "ProductionQuantityLimitsIcon"
-
-
       }
-
+    ]
+  },
+  {
+    "id": "reportes",
+    "text": "Reportes",
+    "icon": "Settings",
+    "children": []
+  },
+  {
+    "id": "autenticacion",
+    "text": "Autenticación",
+    "icon": "LockIcon",  
+    "children": [
+      {
+        "id": "persona",
+        "text": "Persona",
+        "icon": "PersonIcon" 
+      }
     ]
   }
 ]
