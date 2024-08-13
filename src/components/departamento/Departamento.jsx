@@ -5,8 +5,13 @@ import FormDepartamento from "./FormDepartamento";
 import GridDepartamento from "./GridDepartamento";
 import { SiteProps } from '../dashboard/SiteProps';
 
-
+/**
+ * Componente Departamento que gestiona la lógica y renderizado de departamentos.
+ * 
+ * @returns {JSX.Element} Componente que contiene el formulario y la cuadrícula de departamentos.
+ */
 export default function Departamento() {
+  // Fila inicial seleccionada
   const row = {
     dep_id: 0,
     dep_nombre: "",
@@ -15,21 +20,26 @@ export default function Departamento() {
     dep_acronimo: ""
   };
 
+  // Estado para la fila seleccionada
   const [selectedRow, setSelectedRow] = React.useState(row);
+
+  // Datos iniciales del mensaje
   const messageData = {
     open: false,
     severity: "success",
     text: ""
   };
 
-  
+  // Estado para el mensaje
   const [message, setMessage] = React.useState(messageData);
+
+  // Estado para los departamentos
   const [departamentos, setDepartamentos] = React.useState([]);
+
+  // Estado para los países
   const [pais, setPais] = React.useState([]);
 
-
-
-
+  // Efecto para obtener los departamentos al cargar el componente
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/departamento`)
       .then(response => {
@@ -41,36 +51,11 @@ export default function Departamento() {
         console.log(departamentoData);
       })
       .catch(error => {
-        console.error("Error al buscar pais!", error);
+        console.error("Error al buscar departamento!", error);
       });
   }, []);
 
-  // React.useEffect(() => {
-  //   axios.get(`${SiteProps.urlbase}/departamento` )
-  //     .then(response => {
-  //       setDepartamentos(response.data);
-  //       console.log(departamentos);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error al buscar departamento!", error);
-  //     });
-  // }, []);
-  
-
-
-  // React.useEffect(() => {
-  //   axios.get(`${SiteProps.urlbase}/pais` )
-  //     .then(response => {
-  //       setPais(response.data);
-  //       console.log(pais);
-  //     })
-  //     .catch(error => {
-  //       console.error("Error al buscar pais!", error);
-  //     });
-  // }, []);
-
-
-
+  // Efecto para obtener los países al cargar el componente
   React.useEffect(() => {
     axios.get(`${SiteProps.urlbase}/pais`)
       .then(response => {
@@ -78,11 +63,9 @@ export default function Departamento() {
         console.log(pais);
       })
       .catch(error => {
-        console.error("Error al buscar pais!", error);
+        console.error("Error al buscar país!", error);
       });
   }, []);
-
-
 
   return (
     <div style={{ height: '100%', width: '100%' }}>

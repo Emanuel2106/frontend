@@ -206,7 +206,7 @@ export default function FormProductoPresentacion(props) {
           <FormControl fullWidth>
             <TextField
               autoFocus
-              required
+              required  
               id="prp_nombre"
               name="prp_nombre"
               label="Nombre"

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
+// Definición de las columnas para el DataGrid
 const columns = [
   { field: 'dep_id', headerName: 'ID', width: 90, type: 'number' },
   { field: 'dep_nombre', headerName: 'Nombre', width: 250, type: 'string' },
@@ -9,6 +10,14 @@ const columns = [
   { field: 'dep_acronimo', headerName: 'Acronimo', width: 150, type: 'string' }
 ];
 
+/**
+ * Componente GridDepartamento que muestra una tabla de departamentos utilizando DataGrid.
+ * 
+ * @param {Object} props - Props del componente.
+ * @param {Array} props.departamentos - Lista de departamentos a mostrar en la tabla.
+ * @param {Function} props.setSelectedRow - Función para establecer la fila seleccionada.
+ * @returns {JSX.Element} Componente que contiene el DataGrid con los departamentos.
+ */
 export default function GridDepartamento(props) {
   return (
     <DataGrid
@@ -29,9 +38,7 @@ export default function GridDepartamento(props) {
           },
         },
       }}
-      pageSizeOptions={[5,10,20,50]}
+      pageSizeOptions={[5, 10, 20, 50]}
     />
   );
 }
-
-

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-// import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
-// import MuiAppBar from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
+import { SiteProps } from './SiteProps';
 
-// import {drawerWidth} from 
-// const drawerWidth = 240;
-import {SiteProps} from './SiteProps';
-
+/**
+ * Componente Drawer estilizado utilizando Material-UI.
+ * Aplica estilos personalizados al componente MuiDrawer.
+ * Utiliza un tema de Material-UI para manejar transiciones y diseño responsivo.
+ */
 export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       '& .MuiDrawer-paper': {
@@ -32,4 +33,8 @@ export const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 
         }),
       },
     }),
-  );
+);
+
+
+  
+  
